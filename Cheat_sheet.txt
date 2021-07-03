@@ -1,0 +1,84 @@
+**Initialize and activate a virtualenv using:**
+python -m venv <name of venv>
+venv\Scripts\activate.bat
+To Exit -
+deactivate
+
+**Install the dependencies:**
+pip install -r requirements.txt
+
+pip install virtualenv
+pip install SQLAlchemy
+pip install postgres
+pip install Flask
+pip install Flask-Migrate
+
+pip install psycopg2
+pip3 install Flask-cors
+
+** view the list of installations**
+
+pip list
+
+**Run Flask Application**
+> set FLASK_APP=flaskr
+> set FLASK_ENV=development
+> flask run
+
+**jq**Always use double quotes - 
+chocolatey install jq
+jq
+curl "https://api.github.com/repos/stedolan/jq/commits?per_page=5" | jq "."
+
+**CORS - Cross Origin Resource Sharing**
+pip install -U flask-cors
+
+**curl commands**
+https://github.com/spring-guides/gs-accessing-data-rest/issues/11
+#to go to the url
+	curl http://127.0.0.1:5000/books
+#page
+	http://127.0.0.1:5000/books?page=2
+# update a single book's rating
+	curl -X PATCH -H "Content-Type: application/json" -d "{\"rating\":\"5\"}" http://127.0.0.1:5000/books/8
+# delete a single book
+	curl -X DELETE http://127.0.0.1:5000/books/8 
+#create a book
+	curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"Neverwhere\", \"author\":\"Neil Gaiman\", \"rating\":\"5\"}" http://127.0.0.1:5000/books 
+
+**Project**
+These are the files you'd want to edit in the frontend:
+
+    ./frontend/src/components/QuestionView.js
+    ./frontend/src/components/FormView.js
+    ./frontend/src/components/QuizView.js
+
+**Auth0**
+/authorize GET
+https://YOUR_DOMAIN/authorize?
+audience=API_IDENTIFIER&
+scope=SCOPE&
+response_type=code&
+client_id=YOUR_CLIENT_ID&
+redirect_uri=https://YOUR_APP/callback&
+state=STATE
+Example:
+	https://bharat-fsnd.us.auth0.com/authorize?audience=image&response_type=token&client_id=UrzRzPAGiz5Z8GZwh8Jw0ZtjYIo3XVzs&redirect_uri=https://127.0.0.1:8080/login-results
+Resultant URL with JWT:
+	https://127.0.0.1:8080/login-results#access_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjZhazhHYmMzR3l0cERaRjB3M0d3OCJ9.eyJpc3MiOiJodHRwczovL2JoYXJhdC1mc25kLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwNDI1NTA2NjA0NDgwMzIwMTYwMSIsImF1ZCI6ImltYWdlIiwiaWF0IjoxNjI0Mjc1NDE2LCJleHAiOjE2MjQyODI2MTYsImF6cCI6IlVyelJ6UEFHaXo1WjhHWndoOEp3MFp0allJbzNYVnpzIiwic2NvcGUiOiIifQ.XjMBHk3LEku3CZDlOSps9EHU62N_UVdXrcOVEsb1EaJA_N4aYgNvqvUN3BCVFwPKXukwtR9qGVcN3jH_61SMFdvYBRaD6qt2s0WejRXyt2JEz1Jt5PZBp0InxSofakMKrmVYkChD9ml3d88Ymg87fu1vVwJTzizKyssGbQtXvdhv2gfDYxCLVbQeYARJVy2l-cfz-AtkSbQQQ3kTsa4bs1AEbhdANGWc90Ugj3R4YpzCxFbbhU_eoscFhA54ObXFeMkYVUBcwksiuWWdhnGpyRy_jq0W22s1ZksZbVraVrvJCH_saOt9ad0wBbgUSOcbcNHXr_kB_Rj8DJN6fezySQ&expires_in=7200&token_type=Bearer
+	token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjZhazhHYmMzR3l0cERaRjB3M0d3OCJ9.eyJpc3MiOiJodHRwczovL2JoYXJhdC1mc25kLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwNDI1NTA2NjA0NDgwMzIwMTYwMSIsImF1ZCI6ImltYWdlIiwiaWF0IjoxNjI0Mjc1NDE2LCJleHAiOjE2MjQyODI2MTYsImF6cCI6IlVyelJ6UEFHaXo1WjhHWndoOEp3MFp0allJbzNYVnpzIiwic2NvcGUiOiIifQ.XjMBHk3LEku3CZDlOSps9EHU62N_UVdXrcOVEsb1EaJA_N4aYgNvqvUN3BCVFwPKXukwtR9qGVcN3jH_61SMFdvYBRaD6qt2s0WejRXyt2JEz1Jt5PZBp0InxSofakMKrmVYkChD9ml3d88Ymg87fu1vVwJTzizKyssGbQtXvdhv2gfDYxCLVbQeYARJVy2l-cfz-AtkSbQQQ3kTsa4bs1AEbhdANGWc90Ugj3R4YpzCxFbbhU_eoscFhA54ObXFeMkYVUBcwksiuWWdhnGpyRy_jq0W22s1ZksZbVraVrvJCH_saOt9ad0wBbgUSOcbcNHXr_kB_Rj8DJN6fezySQ
+Use the Debugger in JWT.io to view the payload present in the token
+	header.payload.signature
+
+SQL Injection - trying to maliciously inject a SQL through the input data fields
+Brute force attack - continuous multiple attempts
+Serialization - It is the process of transforming a data model into a more easily shared format. 
+		Do not send sensitive info together - ex: id and pass in the same JSON object.
+Logs - Never log personally identifiable info, passwords, secrets
+Rainbow tables - For hashing. create a table with random words and their hash values.
+		Now we equate the has value we have to the password stored in DB. Thus we will
+		have the corresponding plain text now.
+
+Example:
+	https://bharat-fsnd.us.auth0.com/authorize?audience=drinks&response_type=token&client_id=LpZwqAFoHuYwMSi2UQnOdTDuBUheRJSF&redirect_uri=https://127.0.0.1:8080/login-results
+	eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjZhazhHYmMzR3l0cERaRjB3M0d3OCJ9.eyJpc3MiOiJodHRwczovL2JoYXJhdC1mc25kLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwNDI1NTA2NjA0NDgwMzIwMTYwMSIsImF1ZCI6ImRyaW5rcyIsImlhdCI6MTYyNDU2OTY5OCwiZXhwIjoxNjI0NTc2ODk4LCJhenAiOiJMcFp3cUFGb0h1WXdNU2kyVVFuT2RURHVCVWhlUkpTRiIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmRyaW5rcyIsImdldDpkcmlua3MtZGV0YWlsIiwicGF0Y2g6ZHJpbmtzIiwicG9zdDpkcmlua3MiXX0.clkZdP5bACe53ep-H31wQoRXmByGGoqW2AD_rj3A0bFUT3HJqEyEfghPGfQGiU0aT4sDOi_t3RAQIfK7bHdpOktWDyr7DkBCgiOSzUXCoQNEVvZ5CLaa1XiZxIXRuD_FBeuHEcbMpJHvGlLZ5u-rrn4iSn_tjl3b7uQb_h_froJ6zo0w2vG2YtixpA9w4fBNP_EPg1wqZcmHd8ZfXuBkBt1Ul4Z95yGauf7twOubANqj_czW4KV6r8-3Bi-FrhAFyPvX7OIrjGcpCAUcaPcOh21vLDz_Xo3xUwGZDoSaJbkG7zgvKKFCOdcT06mbbn4r7bjiSs5UxQWN0NQI_ATLVA
